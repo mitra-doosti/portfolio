@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitra Doosti - Resume (Full A4 Page)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#111827',
+                            orange: '#EA580C',
+                            gray: '#374151',
+                            light: '#FAFAFC',
+                            accent: '#2563EB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Strict A4 Print Formatting */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .a4-page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                max-width: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+            a {
+                text-decoration: none !important;
+                color: inherit !important;
+            }
+        }
+
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            min-height: 297mm;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="py-6 px-4 flex flex-col items-center">
+
+    <!-- Action Bar (Hidden when printing or saving PDF) -->
+    <div class="w-full max-w-[210mm] mb-4 flex justify-between items-center no-print">
+        <a href="index.html" class="inline-flex items-center text-xs font-semibold text-gray-600 hover:text-black">
+            ← Back to Portfolio Website
+        </a>
+        <button onclick="window.print()" class="inline-flex items-center gap-2 bg-brand-dark text-white px-5 py-2.5 rounded-full font-semibold text-xs hover:bg-gray-800 shadow-md transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            Download Perfect 1-Page A4 PDF
+        </button>
+    </div>
+
+    <!-- Resume Paper Container (Fills Full A4 Perfectly) -->
+    <div class="a4-page bg-white rounded-xl shadow-xl border border-gray-200 p-9 flex flex-col justify-between text-xs leading-snug">
+        
+        <div class="flex-grow flex flex-col justify-between space-y-4">
+            <!-- HEADER SECTION -->
+            <header class="border-b-2 border-gray-900 pb-4 flex justify-between items-end">
+                <div>
+                    <h1 class="text-3xl font-black tracking-tight text-brand-dark uppercase">Mitra Doosti</h1>
+                    <p class="text-sm font-extrabold text-brand-orange mt-1">Graphic & UI/UX Designer</p>
+                    <p class="text-[11px] text-gray-600 font-semibold mt-0.5">B.Sc. Graphic Design · ~2 Yrs Canadian Tech Industry Experience</p>
+                </div>
+
+                <div class="text-right text-[11px] text-gray-700 space-y-1 font-medium leading-tight">
+                    <div class="font-bold text-gray-900">📍 London, Ontario, Canada</div>
+                    <div>📞 <a href="tel:14377990597" class="hover:underline">+1 (437) 799 0597</a></div>
+                    <div>✉️ <a href="mailto:Mitra.doosti9592@gmail.com" class="hover:underline">Mitra.doosti9592@gmail.com</a></div>
+                    <div>🔗 <a href="https://linkedin.com/in/mitra-doosti/" target="_blank" class="text-brand-accent font-semibold hover:underline">linkedin.com/in/mitra-doosti</a></div>
+                </div>
+            </header>
+
+            <!-- PROFESSIONAL SUMMARY -->
+            <section class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-brand-orange mb-1">Professional Summary</h2>
+                <p class="text-[11.5px] text-gray-700 leading-relaxed font-normal">
+                    Multidisciplinary Graphic & UI/UX Designer with a B.Sc. in Graphic Design from Art University of Tehran and ~2 years of professional tech industry experience in Canada at Tali AI. Combines a solid academic foundation in typography, visual communication, and layout composition with modern digital product design, interactive wireframing, and custom illustration capabilities.
+                </p>
+            </section>
+
+            <!-- TWO COLUMN MAIN CONTENT (Fills out full height) -->
+            <div class="grid grid-cols-12 gap-6 flex-grow">
+                
+                <!-- LEFT COLUMN: EXPERIENCE & VOLUNTEER (7 Cols) -->
+                <main class="col-span-7 flex flex-col justify-between space-y-3.5">
+                    <div>
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-1 mb-2">Professional Experience</h2>
+
+                        <div class="space-y-3">
+                            <!-- EXPERIENCE 1: TALI AI (CANADA) -->
+                            <div class="relative pl-3 border-l-2 border-brand-orange space-y-1">
+                                <div class="flex justify-between items-baseline">
+                                    <h3 class="font-black text-brand-dark text-[12px]">Graphic & UI/UX Designer</h3>
+                                    <span class="text-[9.5px] font-extrabold px-1.5 py-0.5 bg-brand-dark text-white rounded">2024 – 2026</span>
+                                </div>
+                                <div class="text-[10.5px] font-bold text-brand-orange">Tali AI · <span class="text-gray-500 font-normal">Canada (Tech Startup)</span></div>
+                                <ul class="text-[11px] text-gray-700 list-disc list-inside space-y-1 pt-0.5 leading-normal">
+                                    <li>Designed responsive web & mobile product interfaces, wireframes, and active user workflows.</li>
+                                    <li>Created custom digital illustrations, icon sets, and multi-channel branding collateral.</li>
+                                    <li>Collaborated with product teams to refine feature accessibility and visual consistency.</li>
+                                </ul>
+                            </div>
+
+                            <!-- EXPERIENCE 2: FREELANCE -->
+                            <div class="relative pl-3 border-l-2 border-gray-200 space-y-1">
+                                <div class="flex justify-between items-baseline">
+                                    <h3 class="font-bold text-brand-dark text-[11.5px]">UI/UX Designer & Illustrator</h3>
+                                    <span class="text-[9.5px] text-gray-500 font-semibold">Jan 2022 – Present</span>
+                                </div>
+                                <div class="text-[10px] font-medium text-gray-500">Freelance · Independent Projects</div>
+                                <ul class="text-[11px] text-gray-700 list-disc list-inside space-y-0.5 pt-0.5 leading-normal">
+                                    <li>Delivered end-to-end UI prototypes, digital paintings, and brand identity systems.</li>
+                                    <li>Produced custom visual assets, promotional graphics, and design guidelines.</li>
+                                </ul>
+                            </div>
+
+                            <!-- EXPERIENCE 3: DASTAN STUDIO -->
+                            <div class="relative pl-3 border-l-2 border-gray-200 space-y-1">
+                                <div class="flex justify-between items-baseline">
+                                    <h3 class="font-bold text-brand-dark text-[11.5px]">Jr. Product Manager & Designer</h3>
+                                    <span class="text-[9.5px] text-gray-500 font-semibold">Nov 2020 – Nov 2021</span>
+                                </div>
+                                <div class="text-[10px] font-medium text-gray-500">Dastan Designing Studio</div>
+                                <ul class="text-[11px] text-gray-700 list-disc list-inside space-y-0.5 pt-0.5 leading-normal">
+                                    <li>Managed UI/UX feature workflows, aligning design concepts with product goals.</li>
+                                    <li>Designed cross-platform graphic assets, brand collateral, and UI guidelines.</li>
+                                </ul>
+                            </div>
+
+                            <!-- EXPERIENCE 4: SNAPPFOOD -->
+                            <div class="relative pl-3 border-l-2 border-gray-200 space-y-1">
+                                <div class="flex justify-between items-baseline">
+                                    <h3 class="font-bold text-brand-dark text-[11.5px]">UI Designer</h3>
+                                    <span class="text-[9.5px] text-gray-500 font-semibold">Winter 2020</span>
+                                </div>
+                                <div class="text-[10px] font-medium text-gray-500">Snappfood <span class="text-gray-400 text-[9px]">(High-Scale E-Commerce)</span></div>
+                                <ul class="text-[11px] text-gray-700 list-disc list-inside space-y-0.5 pt-0.5 leading-normal">
+                                    <li>Designed shipment module UI, back-office panels, and custom vector graphics.</li>
+                                </ul>
+                            </div>
+
+                            <!-- EXPERIENCE 5: SHOPGRAM -->
+                            <div class="relative pl-3 border-l-2 border-gray-200 space-y-1">
+                                <div class="flex justify-between items-baseline">
+                                    <h3 class="font-bold text-brand-dark text-[11.5px]">UI/UX & Graphic Designer</h3>
+                                    <span class="text-[9.5px] text-gray-500 font-semibold">Apr 2018 – Aug 2020</span>
+                                </div>
+                                <div class="text-[10px] font-medium text-gray-500">Shopgram <span class="text-gray-400 text-[9px]">(Art Marketplace Platform)</span></div>
+                                <ul class="text-[11px] text-gray-700 list-disc list-inside space-y-0.5 pt-0.5 leading-normal">
+                                    <li>Designed web & mobile storefronts, seller back-office panels, and custom icon sets.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VOLUNTEER PROJECTS (Fills lower left) -->
+                    <div class="pt-2 border-t border-gray-200 space-y-1">
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400">Volunteer & Creative Leadership</h2>
+                        <div class="space-y-1 text-[10.5px] text-gray-700">
+                            <div>• <span class="font-bold text-brand-dark">Koron Podcast</span> — Graphic Designer <span class="text-gray-400 text-[9.5px]">(2018–Present)</span></div>
+                            <div>• <span class="font-bold text-brand-dark">Frontline Calendar</span> — Graphic Designer & Illustrator <span class="text-gray-400 text-[9.5px]">(2019, 2020)</span></div>
+                            <div>• <span class="font-bold text-brand-dark">Saba Music Festival</span> — Graphic & Poster Designer <span class="text-gray-400 text-[9.5px]">(2017)</span></div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- RIGHT COLUMN: EDUCATION & SKILLS (5 Cols - Fills right side) -->
+                <aside class="col-span-5 flex flex-col justify-between space-y-3.5 border-l border-gray-200 pl-4">
+                    
+                    <!-- EDUCATION -->
+                    <div>
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-1 mb-2">Education</h2>
+                        <h3 class="font-extrabold text-brand-dark text-[12px]">B.Sc. Graphic Design</h3>
+                        <p class="text-[10.5px] font-bold text-brand-orange">Art University of Tehran</p>
+                        <p class="text-[9.5px] text-gray-500 font-semibold">2014 – 2018</p>
+                        <p class="text-[10.5px] text-gray-600 leading-normal mt-1.5">
+                            Formed a comprehensive foundation in typography hierarchy, composition, color theory, & visual communication.
+                        </p>
+                    </div>
+
+                    <!-- SOFTWARE STACK -->
+                    <div>
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-1 mb-2">Software Stack</h2>
+                        <div class="space-y-1 text-[10.5px]">
+                            <div class="flex justify-between border-b border-gray-100 pb-0.5"><span class="font-bold text-gray-800">Figma</span> <span class="text-brand-orange font-bold text-[9px]">Advanced</span></div>
+                            <div class="flex justify-between border-b border-gray-100 pb-0.5"><span class="font-bold text-gray-800">Adobe Illustrator</span> <span class="text-brand-orange font-bold text-[9px]">Advanced</span></div>
+                            <div class="flex justify-between border-b border-gray-100 pb-0.5"><span class="font-bold text-gray-800">Adobe Photoshop</span> <span class="text-brand-orange font-bold text-[9px]">Advanced</span></div>
+                            <div class="flex justify-between border-b border-gray-100 pb-0.5"><span class="font-bold text-gray-800">Adobe XD</span> <span class="text-brand-orange font-bold text-[9px]">Advanced</span></div>
+                            <div class="flex justify-between border-b border-gray-100 pb-0.5"><span class="font-bold text-gray-800">Adobe After Effects</span> <span class="text-gray-500 text-[9px]">Proficient</span></div>
+                            <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe InDesign</span> <span class="text-gray-500 text-[9px]">Proficient</span></div>
+                        </div>
+                        <div class="mt-2 text-[10px] bg-gray-50 p-1.5 rounded border border-gray-100">
+                            <span class="font-bold text-gray-800">Web Tech:</span> <span class="text-gray-600">HTML5, CSS3, WordPress</span>
+                        </div>
+                    </div>
+
+                    <!-- CORE EXPERTISE -->
+                    <div>
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-1 mb-2">Core Expertise</h2>
+                        <div class="flex flex-wrap gap-1 text-[10px]">
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">UI Design</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">UX Design</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Graphic Design</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Digital Illustration</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Wireframing</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Prototyping</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Typography</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Branding</span>
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-800 rounded font-semibold">Poster Design</span>
+                        </div>
+                    </div>
+
+                    <!-- WORKSHOPS -->
+                    <div>
+                        <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-1 mb-2">Specialized Workshops</h2>
+                        <div class="space-y-1.5 text-[10px]">
+                            <div>
+                                <div class="font-bold text-gray-800">Typography Workshop</div>
+                                <div class="text-[9px] text-gray-500">AhmadAli Asali / Frontline (2018–2019)</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-800">Digital Painting</div>
+                                <div class="text-[9px] text-gray-500">Alireza Owji (2018)</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-800">Children's Illustration</div>
+                                <div class="text-[9px] text-gray-500">Ardeshir Pajouheshi / AzadArt (2018–2019)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+
+        <!-- FOOTER (Anchors bottom of page) -->
+        <footer class="border-t border-gray-300 pt-3 mt-3 text-center text-[9.5px] text-gray-500 font-medium">
+            Mitra Doosti · Graphic & UI/UX Designer Resume (Standard Single-Page A4 Format)
+        </footer>
+    </div>
+
+</body>
+</html>
