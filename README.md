@@ -1,1 +1,901 @@
-# portfolio
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitra Doosti | Graphic & UI/UX Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#F7D046',
+                            pink: '#EE889E',
+                            purple: '#A680B8',
+                            blue: '#7FA0D4',
+                            green: '#C0D870',
+                            orange: '#F28552',
+                            dark: '#141416',
+                            muted: '#6E6E73',
+                            light: '#FAFAFC',
+                            card: '#FFFFFF'
+                        },
+                        meho: { green: '#166534', yellow: '#FACC15' },
+                        shopgram: { magenta: '#890066', beige: '#D2BEA1' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAFAFC;
+            color: #141416;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .badge-canada {
+            background: linear-gradient(135deg, #141416 0%, #2D2D32 100%);
+        }
+
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="selection:bg-brand-dark selection:text-white flex flex-col min-h-screen">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 text-brand-dark px-6 py-4 md:px-12 flex justify-between items-center transition-all">
+        <a href="#home" onclick="navigateTo('home')" class="text-lg md:text-xl font-black tracking-tighter hover:opacity-70 transition-opacity">
+            MITRA DOOSTI<span class="text-brand-orange">.</span>
+        </a>
+        
+        <div class="space-x-6 lg:space-x-8 text-sm font-semibold hidden md:flex items-center">
+            <a href="#work" onclick="navigateTo('home', 'work')" class="nav-link">Work</a>
+            <a href="#experience" onclick="navigateTo('home', 'experience')" class="nav-link">Experience</a>
+            <button onclick="openResumeModal(event)" class="nav-link text-brand-orange hover:text-brand-dark">Resume</button>
+            <a href="#contact" onclick="scrollToContact(event)" class="px-5 py-2.5 bg-brand-dark text-white rounded-full hover:bg-gray-800 transition-colors shadow-sm">Contact</a>
+        </div>
+
+        <button id="menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- MOBILE NAVIGATION MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col justify-center items-center space-y-8 text-2xl font-bold hidden md:hidden">
+        <a href="#work" onclick="navigateTo('home', 'work'); toggleMobileMenu()" class="hover:text-brand-orange">Work</a>
+        <a href="#experience" onclick="navigateTo('home', 'experience'); toggleMobileMenu()" class="hover:text-brand-orange">Experience</a>
+        <button onclick="openResumeModal(event); toggleMobileMenu()" class="text-brand-orange">Resume</button>
+        <a href="#contact" onclick="toggleMobileMenu(); scrollToContact(event)" class="hover:text-brand-orange">Contact</a>
+    </div>
+
+    <div class="flex-grow pt-20">
+
+        <!-- VIEW 1: MAIN LANDING PAGE -->
+        <div id="view-home" class="page-view active">
+            
+            <!-- HERO SECTION -->
+            <header class="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 py-12 relative overflow-hidden bg-brand-light">
+                <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- Canadian Professional Experience Highlight Badge -->
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full badge-canada text-white text-xs md:text-sm font-medium shadow-md">
+                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                            <span>Graphic & UI/UX Designer</span>
+                            <span class="text-gray-400">|</span>
+                            <span class="text-gray-300">🇨🇦 ~2 Yrs Canadian Tech Experience</span>
+                        </div>
+
+                        <div>
+                            <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[0.95] text-brand-dark mb-3">
+                                Mitra Doosti<span class="text-brand-orange">.</span>
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-brand-orange tracking-tight mb-4">
+                                Graphic & UI/UX Designer
+                            </h2>
+                        </div>
+
+                        <p class="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed font-normal">
+                            I’m a Graphic & UI/UX Designer who believes great design is where ideas, visuals, and experiences come together. With a background in graphic design and a passion for illustration, I create work that is thoughtful, expressive, and made to connect.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-gray-600 font-medium">
+                            Curious to see where my experience has taken me? 
+                            <button onclick="openResumeModal(event)" class="text-brand-orange font-bold underline hover:text-brand-dark transition-colors">View & download my resume</button>.
+                        </p>
+
+                        <!-- Call To Actions -->
+                        <div class="flex flex-wrap items-center gap-4 pt-4">
+                            <button onclick="navigateTo('home', 'work')" class="inline-flex items-center gap-3 bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-all shadow-md cursor-pointer">
+                                View Work
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                            </button>
+                            <button onclick="openResumeModal(event)" class="inline-flex items-center gap-2 bg-white text-brand-dark border-2 border-brand-dark/20 px-7 py-3.5 rounded-full font-semibold hover:bg-gray-50 transition-all">
+                                View Resume ↗
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Profile Photo Column (Medium Circle Photo) -->
+                    <div class="lg:col-span-5 flex justify-center items-center">
+                        <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-xl border-4 border-white bg-white">
+                            <img src="MitraDoosti.png" onerror="this.onerror=null; this.src='https://placehold.co/500x500/F28552/FFFFFF?text=Mitra+Doosti';" alt="Mitra Doosti Profile Photo" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <!-- SECTION 2: SELECTED WORK -->
+            <section id="work" class="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-gray-100">
+                <div class="max-w-7xl mx-auto">
+                    
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Portfolio</span>
+                            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-dark">Selected Work</h2>
+                        </div>
+                        <p class="text-brand-muted mt-4 md:mt-0 max-w-md text-sm sm:text-base">
+                            Explore case studies spanning UI/UX design, product platforms, and custom visual identity systems.
+                        </p>
+                    </div>
+
+                    <!-- Project Cards Grid (2 Projects: Meho & Shopgram) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                        
+                        <!-- Project 1 Card: MEHO -->
+                        <div onclick="navigateTo('project-meho')" class="group cursor-pointer bg-brand-light rounded-3xl p-6 border border-gray-200/80 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="aspect-[4/3] rounded-2xl bg-meho-green/10 mb-6 overflow-hidden relative flex items-center justify-center">
+                                    <img src="meho-cover.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/166534/FFFFFF?text=MEHO+Case+Study';" alt="Meho Cover Photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-meho-green shadow-sm">UI/UX & App</span>
+                                </div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-meho-green">Smart Home App</span>
+                                    <span class="text-gray-300">•</span>
+                                    <span class="text-xs text-gray-400">2024</span>
+                                </div>
+                                <h3 class="text-2xl font-extrabold tracking-tight mb-2 group-hover:text-meho-green transition-colors">Meho App</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                    A smart home application integrating custom illustrations and active room indicators to streamline device control.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-200/60 flex items-center justify-between text-sm font-bold text-brand-dark">
+                                <span>Explore Case Study</span>
+                                <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 Card: SHOPGRAM -->
+                        <div onclick="navigateTo('project-shopgram')" class="group cursor-pointer bg-brand-light rounded-3xl p-6 border border-gray-200/80 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="aspect-[4/3] rounded-2xl bg-shopgram-beige/20 mb-6 overflow-hidden relative flex items-center justify-center">
+                                    <img src="shopgram-cover.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/890066/FFFFFF?text=SHOPGRAM+Case+Study';" alt="Shopgram Cover Photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-shopgram-magenta shadow-sm">Product & E-Commerce</span>
+                                </div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-shopgram-magenta">Artistic Marketplace</span>
+                                    <span class="text-gray-300">•</span>
+                                    <span class="text-xs text-gray-400">2024</span>
+                                </div>
+                                <h3 class="text-2xl font-extrabold tracking-tight mb-2 group-hover:text-shopgram-magenta transition-colors">Shopgram Platform</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                    An e-commerce platform empowering independent artists to present and sell limited edition design creations.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-200/60 flex items-center justify-between text-sm font-bold text-brand-dark">
+                                <span>Explore Case Study</span>
+                                <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WHAT I DO -->
+            <section class="py-24 px-6 md:px-12 lg:px-24 bg-brand-light border-t border-gray-100">
+                <div class="max-w-7xl mx-auto">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Core Practice</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-dark mb-16">What I Do</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-blue/20 text-brand-dark flex items-center justify-center text-xl font-bold">01</div>
+                            <h3 class="text-xl font-bold">UI/UX & Product Design</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Designing clear, intuitive, and visually engaging digital experiences across mobile and web platforms.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-orange/20 text-brand-dark flex items-center justify-center text-xl font-bold">02</div>
+                            <h3 class="text-xl font-bold">Graphic Design</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Visual communication, typography, layout, branding, marketing collaterals, and digital content.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-pink/20 text-brand-dark flex items-center justify-center text-xl font-bold">03</div>
+                            <h3 class="text-xl font-bold">Illustration</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Digital illustration, visual exploration, custom icon sets, and expressive image-making.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-green/20 text-brand-dark flex items-center justify-center text-xl font-bold">04</div>
+                            <h3 class="text-xl font-bold">Visual Design</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Creating cohesive visual systems, design libraries, and translating complex ideas into strong directions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: WORK EXPERIENCE -->
+            <section id="experience" class="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-gray-100">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Career Journey</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-dark mb-12">Work Experience</h2>
+
+                    <div class="space-y-8">
+                        <!-- Canadian Highlight Experience: Tali AI -->
+                        <div class="bg-brand-light border-2 border-brand-dark p-7 md:p-9 rounded-3xl relative shadow-md hover:shadow-lg transition-shadow">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-dark text-white text-xs font-bold uppercase tracking-wider mb-5">
+                                🇨🇦 Canadian Experience Highlight
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
+                                <div>
+                                    <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-dark">Tali AI</h3>
+                                    <p class="text-base sm:text-lg font-bold text-brand-orange">Graphic & UI/UX Designer</p>
+                                </div>
+                                <div class="text-left sm:text-right">
+                                    <span class="block text-xs font-bold uppercase text-brand-dark">Canada</span>
+                                    <span class="block text-sm text-gray-500 font-semibold">2024 – 2026</span>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-5">
+                                Worked across digital product interface design, visual branding systems, and digital illustrations in a fast-paced Canadian technology startup environment.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white border border-gray-200 text-xs font-bold rounded-full text-gray-700">UI/UX Design</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 text-xs font-bold rounded-full text-gray-700">Graphic Design</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 text-xs font-bold rounded-full text-gray-700">Digital Illustration</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 text-xs font-bold rounded-full text-gray-700">Product Workflows</span>
+                            </div>
+                        </div>
+
+                        <!-- Freelance Experience -->
+                        <div class="bg-white border border-gray-200/80 p-6 md:p-8 rounded-3xl shadow-sm hover:border-gray-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-brand-dark">Freelance Designer & Illustrator</h3>
+                                    <p class="text-sm sm:text-base font-semibold text-brand-orange">UI/UX Designer & Illustrator</p>
+                                </div>
+                                <div class="text-left sm:text-right">
+                                    <span class="block text-xs font-bold uppercase text-gray-400">Remote / Independent</span>
+                                    <span class="block text-sm text-gray-500 font-medium">Jan 2022 – Present</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Delivering end-to-end digital solutions, custom UI prototypes, digital illustrations, and visual identity design for diverse clients and independent creative projects.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">UI/UX Design</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Digital Painting</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Client Management</span>
+                            </div>
+                        </div>
+
+                        <!-- Dastan Designing Studio -->
+                        <div class="bg-white border border-gray-200/80 p-6 md:p-8 rounded-3xl shadow-sm hover:border-gray-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-brand-dark">Dastan Designing Studio</h3>
+                                    <p class="text-sm sm:text-base font-semibold text-brand-orange">Junior Product Manager & Designer</p>
+                                </div>
+                                <div class="text-left sm:text-right">
+                                    <span class="block text-xs font-bold uppercase text-gray-400">Design Studio</span>
+                                    <span class="block text-sm text-gray-500 font-medium">Nov 2020 – Nov 2021</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Bridged design execution with product management strategy, overseeing UI/UX features, graphic collaterals, and illustration assets for client products.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Product Management</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">UI/UX Strategy</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Graphic Design</span>
+                            </div>
+                        </div>
+
+                        <!-- Snappfood -->
+                        <div class="bg-white border border-gray-200/80 p-6 md:p-8 rounded-3xl shadow-sm hover:border-gray-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-brand-dark">Snappfood</h3>
+                                    <p class="text-sm sm:text-base font-semibold text-brand-orange">UI Designer</p>
+                                </div>
+                                <div class="text-left sm:text-right">
+                                    <span class="block text-xs font-bold uppercase text-gray-400">High-Scale E-Commerce</span>
+                                    <span class="block text-sm text-gray-500 font-medium">Winter 2020</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Designed user interfaces and custom in-app illustrations for the shipment module and back-office management system on a large-scale online ordering platform.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Shipment UI Module</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Back-office Panels</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">App Illustration</span>
+                            </div>
+                        </div>
+
+                        <!-- Shopgram -->
+                        <div class="bg-white border border-gray-200/80 p-6 md:p-8 rounded-3xl shadow-sm hover:border-gray-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-brand-dark">Shopgram</h3>
+                                    <p class="text-sm sm:text-base font-semibold text-shopgram-magenta">UI/UX & Graphic Designer</p>
+                                </div>
+                                <div class="text-left sm:text-right">
+                                    <span class="block text-xs font-bold uppercase text-gray-400">Art Marketplace</span>
+                                    <span class="block text-sm text-gray-500 font-medium">Apr 2018 – Aug 2020</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Designed the web & mobile e-commerce platform for independent artists, seller back-office administration panels, brand identity assets, and custom illustrations.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">E-Commerce UI/UX</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Seller Dashboard</span>
+                                <span class="px-3 py-1 bg-brand-light text-xs font-medium rounded-full text-gray-700">Brand Identity</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: EDUCATION, SKILLS & TOOLS -->
+            <section class="py-24 px-6 md:px-12 lg:px-24 bg-brand-light border-t border-gray-100">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    
+                    <!-- Education -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Academic Foundation</span>
+                            <h2 class="text-3xl font-extrabold text-brand-dark">Education</h2>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-sm">
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-orange block mb-1">Bachelor of Science</span>
+                            <h3 class="text-2xl font-extrabold text-brand-dark mb-2">B.Sc. Graphic Design</h3>
+                            <p class="text-base font-semibold text-gray-700 mb-4">Art University of Tehran</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Formed a solid foundational mastery of visual communication, typography hierarchy, composition rules, color theory, and image-making.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Tools -->
+                    <div class="lg:col-span-7 space-y-8">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Capabilities</span>
+                            <h2 class="text-3xl font-extrabold text-brand-dark">Skills & Tools</h2>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Core Expertise</h4>
+                                <div class="flex flex-wrap gap-2.5">
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Graphic Design</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">UI Design</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">UX Design</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Product Design</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Illustration</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Typography</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Visual Communication</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Responsive Design</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Wireframing</span>
+                                    <span class="px-4 py-2 bg-white rounded-xl border border-gray-200/80 text-sm font-semibold text-brand-dark">Prototyping</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Software Stack</h4>
+                                <div class="flex flex-wrap gap-2.5">
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Figma</span>
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Adobe Illustrator</span>
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Adobe Photoshop</span>
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Adobe InDesign</span>
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Adobe After Effects</span>
+                                    <span class="px-4 py-2 bg-brand-dark text-white rounded-xl text-sm font-semibold">Adobe XD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- VIEW 2: PROJECT - MEHO PAGE -->
+        <div id="view-project-meho" class="page-view px-6 md:px-12 lg:px-24 py-12 max-w-7xl mx-auto">
+            <button onclick="navigateTo('home', 'work')" class="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-black mb-8 transition-colors">
+                ← Back to Projects
+            </button>
+
+            <!-- Case Study Header -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-4 h-4 rounded-full bg-meho-yellow"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-meho-green">Smart Home UI/UX Design</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Meho</h1>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl font-light leading-relaxed mb-6">
+                    A smart home application redefining device control through custom illustrations and active zone indicators.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-gray-100 text-sm">
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Role</span>
+                        <span class="font-bold text-gray-800">UI/UX & Visual Designer</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Platform</span>
+                        <span class="font-bold text-gray-800">iOS & Android App</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Scope</span>
+                        <span class="font-bold text-gray-800">9 Full Screens</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Tools</span>
+                        <span class="font-bold text-gray-800">Figma, Illustrator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 Full-Width Photos for MEHO -->
+            <div class="space-y-10 mb-16">
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="2.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+1';" alt="Meho Photo 1" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="3.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+2';" alt="Meho Photo 2" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="4.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+3';" alt="Meho Photo 3" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="5.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+4';" alt="Meho Photo 4" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="6.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+5';" alt="Meho Photo 5" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="7.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+6';" alt="Meho Photo 6" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="8.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+7';" alt="Meho Photo 7" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="9.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+8';" alt="Meho Photo 8" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="10.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/166534/FFFFFF?text=MEHO+-+Photo+9';" alt="Meho Photo 9" class="w-full h-auto block object-cover">
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center border-t border-gray-200 pt-8">
+                <button onclick="navigateTo('home', 'work')" class="text-sm font-bold text-gray-500 hover:text-black">← Back to Projects</button>
+                <button onclick="navigateTo('project-shopgram')" class="text-sm font-bold text-shopgram-magenta hover:underline">Next: Shopgram Platform →</button>
+            </div>
+        </div>
+
+        <!-- VIEW 3: PROJECT - SHOPGRAM PAGE -->
+        <div id="view-project-shopgram" class="page-view px-6 md:px-12 lg:px-24 py-12 max-w-7xl mx-auto">
+            <button onclick="navigateTo('home', 'work')" class="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-black mb-8 transition-colors">
+                ← Back to Projects
+            </button>
+
+            <!-- Case Study Header -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-4 h-4 rounded-full bg-shopgram-magenta"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-shopgram-magenta">Artistic E-Commerce & Product Design</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Shopgram</h1>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl font-light leading-relaxed mb-6">
+                    A digital platform empowering independent artists to present and sell limited edition physical and digital design creations.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-gray-100 text-sm">
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Role</span>
+                        <span class="font-bold text-gray-800">Product & UI/UX Designer</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Platform</span>
+                        <span class="font-bold text-gray-800">Web & Mobile</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Scope</span>
+                        <span class="font-bold text-gray-800">9 Full Screens</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-xs font-semibold uppercase mb-1">Deliverables</span>
+                        <span class="font-bold text-gray-800">Design System & UI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 Full-Width Photos for SHOPGRAM -->
+            <div class="space-y-10 mb-16">
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="11.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+1';" alt="Shopgram Photo 1" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="12.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+2';" alt="Shopgram Photo 2" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="13.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+3';" alt="Shopgram Photo 3" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="14.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+4';" alt="Shopgram Photo 4" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="15.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+5';" alt="Shopgram Photo 5" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="16.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+6';" alt="Shopgram Photo 6" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="17.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+7';" alt="Shopgram Photo 7" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="18.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+8';" alt="Shopgram Photo 8" class="w-full h-auto block object-cover">
+                </div>
+                <div class="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="19.png" onerror="this.onerror=null; this.src='https://placehold.co/1600x1000/890066/FFFFFF?text=SHOPGRAM+-+Photo+9';" alt="Shopgram Photo 9" class="w-full h-auto block object-cover">
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center border-t border-gray-200 pt-8">
+                <button onclick="navigateTo('project-meho')" class="text-sm font-bold text-meho-green hover:underline">← Previous: Meho App</button>
+                <button onclick="navigateTo('home', 'work')" class="text-sm font-bold text-brand-dark hover:underline">Back to All Projects →</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SECTION 6: CONTACT & FOOTER -->
+    <footer id="contact" class="bg-brand-dark text-white py-20 px-6 md:px-12 lg:px-24 mt-20">
+        <div class="max-w-5xl mx-auto text-center space-y-8">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">Let’s work together<span class="text-brand-orange">.</span></h2>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                I’m open to professional design opportunities, collaborations, and interesting digital product projects in Canada.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 text-base sm:text-lg font-medium pt-4">
+                <a href="mailto:Mitra.doosti9592@gmail.com" class="hover:text-brand-yellow transition-colors flex items-center gap-2.5 bg-white/5 px-6 py-3 rounded-full border border-white/10">
+                    <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Mitra.doosti9592@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/mitra-doosti/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors flex items-center gap-2.5 bg-white/5 px-6 py-3 rounded-full border border-white/10">
+                    <svg class="w-5 h-5 text-brand-blue" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn Profile
+                </a>
+            </div>
+
+            <div class="pt-12">
+                <a href="mailto:Mitra.doosti9592@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 bg-brand-orange text-white font-bold rounded-full hover:bg-orange-600 transition-colors shadow-lg">
+                    Get in Touch
+                </a>
+            </div>
+
+            <div class="pt-16 border-t border-gray-800 text-xs text-gray-500">
+                &copy; <span id="year"></span> Mitra Doosti · Graphic & UI/UX Designer.
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESUME POP-UP MODAL -->
+    <div id="resume-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 hidden" onclick="if(event.target===this) closeResumeModal()">
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl border border-gray-200 overflow-hidden animate-in fade-in zoom-in duration-200">
+            
+            <!-- Modal Header Bar -->
+            <div class="px-6 py-4 bg-gray-900 text-white flex items-center justify-between border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-brand-orange"></span>
+                    <h3 class="font-bold text-base sm:text-lg tracking-tight">Mitra Doosti — Resume</h3>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="MitraDoostiResume.pdf" download="MitraDoostiResume.pdf" target="_blank" class="px-4 py-2 bg-brand-orange text-white text-xs font-extrabold rounded-full hover:bg-orange-600 transition-colors flex items-center gap-2 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download PDF
+                    </a>
+                    <button onclick="closeResumeModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-lg font-bold transition-colors" aria-label="Close modal">
+                        &times;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Resume Graphic View) -->
+            <div class="p-6 sm:p-8 overflow-y-auto bg-gray-50 flex-grow text-xs leading-relaxed text-gray-800">
+                <div class="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-sm max-w-3xl mx-auto space-y-6">
+                    
+                    <!-- Resume Header -->
+                    <div class="border-b-2 border-gray-900 pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-3">
+                        <div>
+                            <h1 class="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">MITRA DOOSTI</h1>
+                            <p class="text-sm font-bold text-brand-orange mt-0.5">Graphic & UI/UX Designer</p>
+                            <p class="text-xs text-gray-500 font-semibold mt-0.5">B.Sc. Graphic Design · ~2 Yrs Canadian Tech Industry Experience</p>
+                        </div>
+                        <div class="text-left sm:text-right text-xs text-gray-600 space-y-0.5">
+                            <div>📍 London, Ontario, Canada</div>
+                            <div>📞 +1 (437) 799 0597</div>
+                            <div>✉️ Mitra.doosti9592@gmail.com</div>
+                            <div>🔗 linkedin.com/in/mitra-doosti</div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Summary -->
+                    <div class="bg-gray-50 p-3.5 rounded-lg border border-gray-200/80">
+                        <h2 class="text-[10px] font-black uppercase tracking-widest text-brand-orange mb-1">Professional Summary</h2>
+                        <p class="text-xs text-gray-700 leading-relaxed">
+                            Multidisciplinary Graphic & UI/UX Designer with a B.Sc. in Graphic Design from Art University of Tehran and ~2 years of professional tech industry experience in Canada at Tali AI. Combines a solid academic foundation in typography, visual communication, and layout composition with modern digital product design, interactive wireframing, and custom illustration capabilities.
+                        </p>
+                    </div>
+
+                    <!-- 2-Column Content -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                        <!-- Left Column -->
+                        <div class="md:col-span-7 space-y-4">
+                            <h2 class="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b pb-1">Professional Experience</h2>
+                            
+                            <div class="space-y-3">
+                                <div class="border-l-2 border-brand-orange pl-3 space-y-1">
+                                    <div class="flex justify-between items-baseline">
+                                        <h3 class="font-bold text-gray-900 text-sm">Graphic & UI/UX Designer</h3>
+                                        <span class="text-[10px] font-bold bg-gray-900 text-white px-1.5 py-0.5 rounded">2024–2026</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-brand-orange">Tali AI · <span class="text-gray-500 font-normal">Canada (Tech Startup)</span></p>
+                                    <ul class="list-disc list-inside text-gray-600 text-xs space-y-0.5 pt-1">
+                                        <li>Designed responsive web & mobile interfaces, wireframes & workflows.</li>
+                                        <li>Created custom digital illustrations, icon sets & branding collateral.</li>
+                                        <li>Collaborated with product teams to refine feature accessibility.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="border-l-2 border-gray-200 pl-3 space-y-1">
+                                    <div class="flex justify-between items-baseline">
+                                        <h3 class="font-bold text-gray-900 text-sm">UI/UX Designer & Illustrator</h3>
+                                        <span class="text-[10px] text-gray-500">Jan 2022 – Present</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-gray-500">Freelance · Independent Projects</p>
+                                    <ul class="list-disc list-inside text-gray-600 text-xs space-y-0.5 pt-1">
+                                        <li>Delivered end-to-end UI prototypes, digital paintings & brand identity.</li>
+                                        <li>Produced visual assets, promotional graphics & design guidelines.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="border-l-2 border-gray-200 pl-3 space-y-1">
+                                    <div class="flex justify-between items-baseline">
+                                        <h3 class="font-bold text-gray-900 text-sm">Jr. Product Manager & Designer</h3>
+                                        <span class="text-[10px] text-gray-500">Nov 2020 – Nov 2021</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-gray-500">Dastan Designing Studio</p>
+                                    <ul class="list-disc list-inside text-gray-600 text-xs space-y-0.5 pt-1">
+                                        <li>Managed UI/UX feature workflows, aligning concepts with product goals.</li>
+                                        <li>Designed cross-platform graphic assets and UI guidelines.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="border-l-2 border-gray-200 pl-3 space-y-1">
+                                    <div class="flex justify-between items-baseline">
+                                        <h3 class="font-bold text-gray-900 text-sm">UI Designer</h3>
+                                        <span class="text-[10px] text-gray-500">Winter 2020</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-gray-500">Snappfood (High-Scale E-Commerce)</p>
+                                    <p class="text-gray-600 text-xs pt-0.5">• Designed shipment module UI, back-office panels, and custom vector graphics.</p>
+                                </div>
+
+                                <div class="border-l-2 border-gray-200 pl-3 space-y-1">
+                                    <div class="flex justify-between items-baseline">
+                                        <h3 class="font-bold text-gray-900 text-sm">UI/UX & Graphic Designer</h3>
+                                        <span class="text-[10px] text-gray-500">Apr 2018 – Aug 2020</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-gray-500">Shopgram (Art Marketplace Platform)</p>
+                                    <p class="text-gray-600 text-xs pt-0.5">• Designed web & mobile storefronts, seller panels, and custom icon sets.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="md:col-span-5 space-y-4 md:border-l md:border-gray-200 md:pl-4">
+                            <div>
+                                <h2 class="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b pb-1 mb-2">Education</h2>
+                                <h3 class="font-extrabold text-gray-900 text-sm">B.Sc. Graphic Design</h3>
+                                <p class="text-xs font-bold text-brand-orange">Art University of Tehran</p>
+                                <p class="text-[10px] text-gray-500">2014 – 2018</p>
+                            </div>
+
+                            <div>
+                                <h2 class="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b pb-1 mb-2">Software Stack</h2>
+                                <div class="space-y-1 text-xs">
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Figma</span><span class="text-brand-orange font-bold text-[10px]">Advanced</span></div>
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe Illustrator</span><span class="text-brand-orange font-bold text-[10px]">Advanced</span></div>
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe Photoshop</span><span class="text-brand-orange font-bold text-[10px]">Advanced</span></div>
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe XD</span><span class="text-brand-orange font-bold text-[10px]">Advanced</span></div>
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe After Effects</span><span class="text-gray-500 text-[10px]">Proficient</span></div>
+                                    <div class="flex justify-between"><span class="font-bold text-gray-800">Adobe InDesign</span><span class="text-gray-500 text-[10px]">Proficient</span></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h2 class="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b pb-1 mb-2">Core Expertise</h2>
+                                <div class="flex flex-wrap gap-1 text-[10px]">
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">UI Design</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">UX Design</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Graphic Design</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Digital Illustration</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Wireframing</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Prototyping</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Typography</span>
+                                    <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-semibold">Branding</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal Footer Bar -->
+            <div class="p-4 bg-gray-100 border-t border-gray-200 flex justify-between items-center text-xs text-gray-500">
+                <span>Click "Download PDF" to save the original file.</span>
+                <button onclick="closeResumeModal()" class="px-5 py-2 bg-gray-900 text-white font-bold rounded-full hover:bg-black transition-colors">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Resume Modal Handlers
+        function openResumeModal(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const modal = document.getElementById('resume-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeResumeModal() {
+            const modal = document.getElementById('resume-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeResumeModal();
+        });
+
+        // Single Page Router & Scroll Handler
+        function navigateTo(pageId, scrollTarget = null) {
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const targetView = document.getElementById('view-' + pageId);
+            if (targetView) {
+                targetView.classList.add('active');
+            } else {
+                document.getElementById('view-home').classList.add('active');
+            }
+
+            window.location.hash = pageId;
+
+            if (scrollTarget) {
+                setTimeout(() => {
+                    const el = document.getElementById(scrollTarget);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 60);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function scrollToContact(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const homeView = document.getElementById('view-home');
+            if (homeView && !homeView.classList.contains('active')) {
+                navigateTo('home');
+            }
+            setTimeout(() => {
+                const footer = document.getElementById('contact');
+                if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+            }, 60);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleHashChange() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash.startsWith('project-')) {
+                navigateTo(hash);
+            } else {
+                navigateTo('home');
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                handleHashChange();
+            }
+        });
+    </script>
+</body>
+</html>
